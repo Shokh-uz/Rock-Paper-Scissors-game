@@ -1,0 +1,191 @@
+body {
+  background-color: lightblue;
+  color: darkblue;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Arial, sans-serif;
+}
+
+/* Glass container */
+.glass {
+  text-align: center;
+  padding: 30px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+}
+
+.asosiy {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+.malumot {
+  position: fixed;
+  bottom: 10px;
+  width: 100%;
+  display: inline-block;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+.yaratuvchi {
+  position: fixed;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 14px;
+  color: darkblue;
+  opacity: 0.7;
+  user-select: none;
+  font-weight: bold;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.github-icon {
+  position: fixed;
+  bottom: 10px;
+  right: 44%;
+
+  width: 44px;
+  height: 44px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 2px solid darkblue;
+  border-radius: 50%;
+
+  font-size: 24px;
+  color: darkblue;
+
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+
+  transition: 0.3s ease;
+}
+
+.github-icon:hover {
+  transform: scale(1.15);
+  background: darkblue;
+  color: white;
+}
+
+
+/* Buttons */
+#themeToggle {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 16px;
+  background-color: darkblue;
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s;
+}
+.btn {
+  color: white;
+  border-radius: 16px;
+  border: none;
+  padding: 10px 20px;
+  background-color: darkblue;
+  font-size: 16px;
+  cursor: pointer;
+  margin: 10px;
+  transition: background-color 0.3s, opacity 0.3s;
+}
+
+.btn:hover {
+  background-color: #00008b;
+  opacity: 0.7;
+}
+.result {
+  margin-top: 20px;
+}
+
+#resultText {
+  font-size: 18px;
+  font-weight: 600;
+  color: darkblue;
+  transition: 0.3s;
+}
+@media (max-width: 600px) {
+  .glass {
+    width: 90%;
+    padding: 20px;
+  }
+
+  .btn {
+    width: 100%;
+    margin: 10px 0;
+  }
+  .yaratuvchi{
+    font-size: 12px;
+    left: 35%;
+  }
+  .github-icon{
+    width: 36px;
+    height: 36px;
+    font-size: 18px;
+    right: 30%;
+  }
+}
+body.dark {
+  background-color: #121212;
+  color: #e0e0e0;
+}
+
+body.dark .glass {
+  background: rgba(32, 32, 32, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+}
+
+body.dark .btn {
+  background-color: #1e1e1e;
+  color: #e0e0e0;
+}
+
+body.dark .btn:hover {
+  background-color: #333333;
+}
+
+body.dark .github-icon {
+  border: 2px solid #e0e0e0;
+  color: #e0e0e0;
+}
+
+body.dark .github-icon:hover {
+  background: #e0e0e0;
+  color: #121212;
+}
+
+body.dark #resultText {
+  color: #e0e0e0;
+}
+body.dark .yaratuvchi {
+  color: #e0e0e0;
+}
+body.dark #themeToggle {
+
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+}
+
+
