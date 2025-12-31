@@ -8,8 +8,8 @@ body {
   height: 100vh;
   display: grid;
   place-items: center;
-  background: #4B5D67;
-  font-family: Arial, sans-serif;
+  background:radial-gradient(circle at center, #0b1c2d, #000);
+   font-family: Arial, sans-serif;
 }
 
 .clock {
