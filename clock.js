@@ -16,7 +16,7 @@ const clockEl = document.getElementById("clock");
 function createDigit() {
   const d = document.createElement("div");
   d.className = "digit";
-
+  
   for (let i = 0; i < 15; i++) {
     const t = document.createElement("div");
     t.className = "tile";
@@ -32,6 +32,13 @@ function createColon() {
   return c;
 }
 
+// Konteynerlar yaratish
+const hoursContainer = document.createElement("div");
+hoursContainer.className = "hours";
+
+const minutesContainer = document.createElement("div");
+minutesContainer.className = "minutes";
+
 const digits = [
   createDigit(),
   createDigit(),
@@ -40,8 +47,17 @@ const digits = [
   createDigit(),
 ];
 
-digits.forEach(el => clockEl.appendChild(el));
+// Soat va minutlarni to'g'ri joylash
+hoursContainer.appendChild(digits[0]);
+hoursContainer.appendChild(digits[1]);
+hoursContainer.appendChild(digits[2]); // colon
+minutesContainer.appendChild(digits[3]);
+minutesContainer.appendChild(digits[4]);
 
+clockEl.appendChild(hoursContainer);
+clockEl.appendChild(minutesContainer);
+
+// ASOSIY QISM - renderTime funksiyasi
 function renderTime() {
   const time = new Date().toLocaleTimeString("en-GB", {
     timeZone: "Asia/Tashkent",
@@ -65,5 +81,10 @@ function renderTime() {
 
 setInterval(renderTime, 1000);
 renderTime();
+// === SEA SOUND ===
+const sea = document.getElementById("seaSound");
 
-
+document.addEventListener("click", () => {
+  sea.volume = 0.35;
+  sea.play();
+}, { once: true });

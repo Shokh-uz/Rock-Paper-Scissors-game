@@ -13,13 +13,20 @@ body {
 }
 
 .clock {
-  display: grid;
-  grid-template-columns: repeat(5, auto);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.hours,
+.minutes {
+  display: flex;
   gap: 12px;
 }
 
 .digit {
   display: grid;
+  place-items: center;
   grid-template-columns: repeat(3, 10px);
   grid-template-rows: repeat(5, 10px);
   gap: 3px;
@@ -40,7 +47,6 @@ body {
   transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1),
   opacity 0.4s ease;
 }
-
 .tile.on {
   background: lightgreen;
   transform: scale(1) rotateX(0deg);
@@ -57,64 +63,179 @@ body {
   animation: blink 1s steps(1) infinite;
 }
 
+
 @keyframes blink {
   50% {
     opacity: 0.15;
   }
 }
 
-.soat{
-    position: relative;
-    padding: 12px 12px;
-    font-size: 18px;
-    color: lightblue;
-    opacity: 0.7;
-    user-select: none;
-    font-weight: bold;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    align-items: center;
-    background-color: #4B5D67;
-    background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-
-    border-radius: 16px;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-
-
+@media (min-width: 1024px) {
+  .clock {
+    transform: scale(4);
+  }
+}
+@media (max-width: 480px) {
+  .colon {
+    font-size: 24px;
+  }
 }
 @media (min-width: 768px) {
-  .soat {
-    transform: none;
-  }
-}
-@media (min-width: 1200px) {
-  .soat {
-    transform: none;
-  }
-}
-@media (min-width: 1200px) {
-  .digit {
-    grid-template-columns: repeat(3, 14px);
-    grid-template-rows: repeat(5, 14px);
-    gap: 6px;
-    padding: 14px;
+  .tile {
+    transform: scale(0.5) rotateX(90deg);
+    opacity: 0;
   }
 
-  .tile {
-    width: 14px;
-    height: 14px;
+  .tile.on {
+    transform: scale(1) rotateX(0deg);
+    opacity: 1;
+  }
+}
+.malumot {
+  position: fixed;
+  bottom: 10px;
+  width: 100%;
+  display: inline-block;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+.yaratuvchi {
+  position: fixed;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 14px;
+  color: lightgreen;
+  text-shadow: 0 6px 18px rgba(0, 255, 220, 0.35);
+  opacity: 0.7;
+  user-select: none;
+  font-weight: bold;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.github-icon {
+  position: fixed;
+  bottom: 10px;
+  right: 44%;
+
+  width: 44px;
+  height: 44px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 2px solid lightgreen;
+  border-radius: 50%;
+
+  font-size: 24px;
+  color: lightgreen;
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+
+  transition: 0.3s ease;
+}
+
+.github-icon:hover {
+  transform: scale(1.15);
+  background: lightblue;
+  color: white;
+}
+
+@media (max-width: 600px) {
+  body {
+    padding: 20px;
   }
 
   .clock {
-    gap: 20px;
+    flex-direction: column;
+    gap: 24px;
+    transform: scale(1.5);
   }
 
-  .country {
-    font-size: 40px;
+  .hours,
+  .minutes {
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .digit {
+    grid-template-columns: repeat(3, 14px);
+    grid-template-rows: repeat(5, 14px);
+    box-shadow: none;
+  }
+
+  .tile {
+    width: 12px;
+    height: 12px;
+    box-shadow: none;
+  }
+  .tile.on {
+    box-shadow: none;
+  }
+  .yaratuvchi {
+    font-size: 11px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .colon{
+    display: none;
   }
 }
+@media (orientation: landscape) and (max-width: 900px) {
+  .clock {
+    transform: rotate(90deg) scale(1.2);
+  }
+}
+/* ===== OCEAN BACKGROUND ===== */
+.ocean-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(
+      180deg,
+      #020a18 0%,
+      #031b34 40%,
+      #043f5f 70%,
+      #045d6d 100%
+    );
+  overflow: hidden;
+}
 
+.ocean-bg::before,
+.ocean-bg::after {
+  content: "";
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  top: 60%;
+  left: -50%;
+  background: radial-gradient(
+    circle at center,
+    rgba(0,255,220,0.25),
+    transparent 60%
+  );
+  animation: waveMove 30s ease-in-out infinite;
+}
+.ocean-bg::before {
+  animation-duration: 24s;
+  opacity: 0.6;
+}
+.ocean-bg::after {
+  animation-duration: 32s;
+  opacity: 0.4;
+}
 
-
-
+@keyframes waveMove {
+  0% {
+    transform: translateX(0) translateY(0);
+  }
+  50% {
+    transform: translateX(-18%) translateY(6%);
+  }
+  100% {
+    transform: translateX(-30%) translateY(10%);
+  }
+}
